@@ -629,7 +629,7 @@ then
 {
   "regeninterval": $dur,
   "endpoints": [ {
-    "alias": "$alval",
+    "alias": "$alval"
 } ] }
 EOF
                         if [ ! -f $lmf ] 

@@ -603,12 +603,13 @@ then
             fi
             cat <<EOF >$TMPF
 {
+ "regeninterval" : $dur,
  "endpoints": [ {
-    "regeninterval" : $dur,
-    "priority" : 1,
-    "port":  $feport,
-    "ech": "$echconfiglist"$ipstr
- } ]
+    "priority": 1,
+    "params": {
+      "port":  $feport,
+      "ech": "$echconfiglist"$ipstr
+ } } ]
 }
 EOF
             sudo cp $TMPF $fewkechfile
@@ -655,9 +656,10 @@ then
                     do
                         TMPF1=`mktemp`
                         cat <<EOF >$TMPF1
-{ "endpoints": [ {
-    "alias": "$alval",
-    "regeninterval": $dur
+{
+  "regeninterval": $dur,
+  "endpoints": [ {
+    "alias": "$alval"
 } ] }
 EOF
                         if [ ! -f $lmf ] 
